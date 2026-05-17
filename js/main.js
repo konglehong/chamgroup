@@ -209,12 +209,19 @@ mobileFixStyle.textContent = `
     .method-list h3,
     .service-list h3,
     .news-list h3,
-    .contact-copy h2,
     .page-hero h1,
     .contact-page-hero h1,
     .article-hero h1 {
       line-height: 1.16 !important;
       letter-spacing: 0 !important;
+    }
+
+    .contact-copy h2,
+    .contact-teaser .contact-copy h2 {
+      max-width: 420px !important;
+      font-size: clamp(44px, 11.5vw, 58px) !important;
+      line-height: 1.08 !important;
+      letter-spacing: -0.01em !important;
     }
 
     .project-intro p,
@@ -368,6 +375,14 @@ mobileFixStyle.textContent = `
     .studio-services h2 {
       font-size: clamp(38px, 11.8vw, 52px) !important;
       line-height: 1.1 !important;
+    }
+
+    .contact-copy h2,
+    .contact-teaser .contact-copy h2 {
+      max-width: 340px !important;
+      font-size: clamp(42px, 10.8vw, 50px) !important;
+      line-height: 1.1 !important;
+      letter-spacing: -0.008em !important;
     }
 
     .mobile-nav-panel {
