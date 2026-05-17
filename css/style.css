@@ -1077,6 +1077,80 @@ img {
   color: var(--ink);
 }
 
+.article {
+  padding-bottom: var(--section-gap);
+}
+
+.article-hero {
+  min-height: 54vh;
+  padding: 118px var(--page-pad) 56px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  border-bottom: 1px solid var(--line);
+}
+
+.article-hero a,
+.article-hero span {
+  width: fit-content;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.article-hero span {
+  margin-top: 18px;
+}
+
+.article-hero h1 {
+  max-width: 1180px;
+  margin: 28px 0 0;
+  font-size: clamp(50px, 8vw, 126px);
+  line-height: 1.06;
+  letter-spacing: -0.01em;
+  font-weight: 400;
+}
+
+.article-hero p {
+  max-width: 760px;
+  margin: 28px 0 0;
+  color: #333;
+  font-size: clamp(19px, 1.8vw, 26px);
+  line-height: 1.44;
+}
+
+.article-image {
+  height: 62vh;
+  min-height: 520px;
+}
+
+.article-body {
+  max-width: 840px;
+  margin: 0 auto;
+  padding: 64px var(--page-pad) 0;
+}
+
+.article-body p {
+  margin: 0;
+  color: #333;
+  font-size: clamp(19px, 1.35vw, 23px);
+  line-height: 1.64;
+}
+
+.article-body p + p {
+  margin-top: 24px;
+}
+
+.article-body h2 {
+  margin: 54px 0 24px;
+  font-size: clamp(32px, 4vw, 58px);
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+  font-weight: 400;
+}
+
 .floating-contact {
   position: fixed;
   z-index: 30;
@@ -2470,6 +2544,43 @@ body {
   .project-intro p,
   .studio-statement p {
     line-height: 1.22;
+    letter-spacing: 0;
+  }
+
+  .article-hero {
+    min-height: 46vh;
+    padding: 92px var(--page-pad) 42px;
+  }
+
+  .article-hero h1 {
+    font-size: clamp(42px, 12vw, 62px);
+    line-height: 1.12;
+    letter-spacing: 0;
+  }
+
+  .article-hero p {
+    font-size: 18px;
+  }
+
+  .article-image {
+    height: auto;
+    min-height: 0;
+    aspect-ratio: 1.08 / 1;
+  }
+
+  .article-body {
+    padding-top: 42px;
+  }
+
+  .article-body p {
+    font-size: 17px;
+    line-height: 1.62;
+  }
+
+  .article-body h2 {
+    margin-top: 42px;
+    font-size: clamp(30px, 9vw, 42px);
+    line-height: 1.16;
     letter-spacing: 0;
   }
 }
