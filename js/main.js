@@ -15,8 +15,13 @@ mobileFixStyle.textContent = `
   @media (max-width: 760px) {
     .site-header {
       position: sticky;
-      z-index: 80;
+      z-index: 100;
       transform: translateY(0) !important;
+      background: rgba(255, 255, 255, 0.98);
+    }
+
+    .site-header::after {
+      display: none !important;
     }
 
     .site-header .top-nav {
@@ -25,39 +30,41 @@ mobileFixStyle.textContent = `
 
     .mobile-nav-panel {
       position: fixed;
-      z-index: 78;
+      z-index: 98;
       top: 64px;
       left: 0;
       right: 0;
-      max-height: calc(100svh - 64px);
-      padding: 10px var(--page-pad) 18px;
+      bottom: 0;
+      min-height: calc(100svh - 64px);
+      padding: 18px 30px 32px;
       border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-      background: rgba(255, 255, 255, 0.985);
-      box-shadow: 0 28px 46px rgba(0, 0, 0, 0.08);
+      background: #fff;
       overflow-y: auto;
       overscroll-behavior: contain;
       opacity: 0;
       pointer-events: none;
-      transform: translateY(-10px);
-      transition: opacity 0.22s ease, transform 0.22s ease;
+      visibility: hidden;
+      transform: translateY(-8px);
+      transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
     }
 
     .site-header.is-menu-open .mobile-nav-panel {
       opacity: 1;
       pointer-events: auto;
+      visibility: visible;
       transform: translateY(0);
     }
 
     .mobile-nav-panel a {
       display: flex;
       align-items: center;
-      min-height: 56px;
-      padding: 15px 0;
+      min-height: 72px;
+      padding: 12px 0;
       border-bottom: 1px solid var(--line);
       color: var(--ink);
-      font-size: clamp(30px, 8vw, 40px);
-      line-height: 1.12;
+      font-size: clamp(38px, 10.8vw, 58px);
+      font-weight: 400;
+      line-height: 1.08;
       letter-spacing: 0;
       text-transform: uppercase;
       white-space: normal;
@@ -98,12 +105,14 @@ mobileFixStyle.textContent = `
   @media (max-width: 520px) {
     .mobile-nav-panel {
       top: 60px;
-      max-height: calc(100svh - 60px);
+      min-height: calc(100svh - 60px);
+      padding: 18px 30px 28px;
     }
 
     .mobile-nav-panel a {
-      min-height: 54px;
-      font-size: clamp(28px, 8.4vw, 38px);
+      min-height: 72px;
+      font-size: clamp(40px, 11.4vw, 56px);
+      line-height: 1.08;
     }
 
     .hero,
