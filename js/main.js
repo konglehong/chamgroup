@@ -3,7 +3,131 @@ const menuToggle = document.querySelector(".menu-toggle");
 let lastScrollY = window.scrollY;
 let pointerNearTop = false;
 
+const mobileFixStyle = document.createElement("style");
+mobileFixStyle.setAttribute("data-cham-mobile-fix", "true");
+mobileFixStyle.textContent = `
+  html,
+  body {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  @media (max-width: 760px) {
+    .site-header {
+      position: sticky;
+      z-index: 80;
+      transform: translateY(0) !important;
+    }
+
+    .site-header .top-nav {
+      display: none !important;
+    }
+
+    .mobile-nav-panel {
+      position: fixed;
+      z-index: 78;
+      top: 64px;
+      left: 0;
+      right: 0;
+      max-height: calc(100svh - 64px);
+      padding: 10px var(--page-pad) 18px;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.985);
+      box-shadow: 0 28px 46px rgba(0, 0, 0, 0.08);
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-10px);
+      transition: opacity 0.22s ease, transform 0.22s ease;
+    }
+
+    .site-header.is-menu-open .mobile-nav-panel {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    .mobile-nav-panel a {
+      display: flex;
+      align-items: center;
+      min-height: 56px;
+      padding: 15px 0;
+      border-bottom: 1px solid var(--line);
+      color: var(--ink);
+      font-size: clamp(30px, 8vw, 40px);
+      line-height: 1.12;
+      letter-spacing: 0;
+      text-transform: uppercase;
+      white-space: normal;
+    }
+
+    .mobile-nav-panel a:last-child {
+      border-bottom: 0;
+    }
+
+    body.is-menu-open {
+      overflow: hidden;
+      touch-action: none;
+    }
+
+    body.is-menu-open .floating-contact {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .hero,
+    .page-image-hero {
+      min-height: min(520px, calc(100svh - 60px));
+    }
+
+    .project-grid,
+    .project-grid-four,
+    .studio-list,
+    .method-list,
+    .process-list,
+    .service-list,
+    .news-list,
+    .contact-panel,
+    .footer {
+      max-width: 100%;
+    }
+  }
+
+  @media (max-width: 520px) {
+    .mobile-nav-panel {
+      top: 60px;
+      max-height: calc(100svh - 60px);
+    }
+
+    .mobile-nav-panel a {
+      min-height: 54px;
+      font-size: clamp(28px, 8.4vw, 38px);
+    }
+
+    .hero,
+    .page-image-hero {
+      min-height: 500px;
+    }
+  }
+`;
+document.head.append(mobileFixStyle);
+
+const isMobileViewport = () => window.matchMedia("(max-width: 760px)").matches;
+
 if (header) {
+  const mobileNavPanel = document.createElement("nav");
+  mobileNavPanel.className = "mobile-nav-panel";
+  mobileNavPanel.setAttribute("aria-label", "Điều hướng chính trên mobile");
+
+  header.querySelectorAll(".top-nav a").forEach((navLink) => {
+    const mobileLink = navLink.cloneNode(true);
+    mobileNavPanel.append(mobileLink);
+  });
+
+  header.append(mobileNavPanel);
+
   const setMenuOpen = (isOpen) => {
     header.classList.toggle("is-menu-open", isOpen);
     document.body.classList.toggle("is-menu-open", isOpen);
@@ -13,6 +137,13 @@ if (header) {
 
   const updateHeaderVisibility = () => {
     const currentScrollY = window.scrollY;
+
+    if (isMobileViewport()) {
+      header.classList.remove("is-hidden");
+      lastScrollY = Math.max(currentScrollY, 0);
+      return;
+    }
+
     const scrollingDown = currentScrollY > lastScrollY;
     const shouldHide = scrollingDown && currentScrollY > 96 && !pointerNearTop && !header.classList.contains("is-menu-open");
 
@@ -24,7 +155,19 @@ if (header) {
     updateHeaderVisibility();
   }, { passive: true });
 
+  window.addEventListener("resize", () => {
+    if (!isMobileViewport()) {
+      setMenuOpen(false);
+    }
+
+    updateHeaderVisibility();
+  }, { passive: true });
+
   window.addEventListener("mousemove", (event) => {
+    if (isMobileViewport()) {
+      return;
+    }
+
     const isNearTop = event.clientY <= 86;
 
     if (isNearTop !== pointerNearTop) {
@@ -37,7 +180,7 @@ if (header) {
     setMenuOpen(!header.classList.contains("is-menu-open"));
   });
 
-  header.querySelectorAll(".top-nav a").forEach((navLink) => {
+  header.querySelectorAll(".top-nav a, .mobile-nav-panel a").forEach((navLink) => {
     navLink.addEventListener("click", () => {
       setMenuOpen(false);
     });
