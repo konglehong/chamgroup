@@ -18,6 +18,24 @@ mobileFixStyle.textContent = `
     text-rendering: optimizeLegibility;
   }
 
+  .floating-contact {
+    display: flex !important;
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .floating-contact .floating-contact-menu {
+    opacity: 0 !important;
+    pointer-events: none !important;
+    transform: translateY(8px) !important;
+  }
+
+  .floating-contact.is-open .floating-contact-menu {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    transform: translateY(0) !important;
+  }
+
   .hero-title h1 {
     font-size: clamp(56px, 8.2vw, 132px) !important;
     line-height: 1.02 !important;
@@ -505,12 +523,50 @@ document.querySelectorAll(".brief-form").forEach((briefForm) => {
   });
 });
 
+const closeFloatingContact = (floatingContact) => {
+  if (!floatingContact) {
+    return;
+  }
+
+  floatingContact.classList.remove("is-open");
+  const toggleButton = floatingContact.querySelector(".floating-contact-toggle");
+  toggleButton?.setAttribute("aria-expanded", "false");
+};
+
 document.querySelectorAll(".floating-contact-toggle").forEach((toggleButton) => {
-  toggleButton.addEventListener("click", () => {
+  toggleButton.addEventListener("click", (event) => {
+    event.stopPropagation();
+
     const floatingContact = toggleButton.closest(".floating-contact");
-    const isOpen = floatingContact?.classList.toggle("is-open");
-    toggleButton.setAttribute("aria-expanded", String(Boolean(isOpen)));
+    const willOpen = !floatingContact?.classList.contains("is-open");
+
+    document.querySelectorAll(".floating-contact.is-open").forEach((openContact) => {
+      if (openContact !== floatingContact) {
+        closeFloatingContact(openContact);
+      }
+    });
+
+    floatingContact?.classList.toggle("is-open", willOpen);
+    toggleButton.setAttribute("aria-expanded", String(Boolean(willOpen)));
+
+    if (!willOpen) {
+      toggleButton.blur();
+    }
   });
+});
+
+document.addEventListener("click", (event) => {
+  document.querySelectorAll(".floating-contact.is-open").forEach((floatingContact) => {
+    if (!floatingContact.contains(event.target)) {
+      closeFloatingContact(floatingContact);
+    }
+  });
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    document.querySelectorAll(".floating-contact.is-open").forEach(closeFloatingContact);
+  }
 });
 
 const projectFilterButtons = document.querySelectorAll(".project-categories button");
