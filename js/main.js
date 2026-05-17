@@ -1,3 +1,92 @@
+const criticalMobileMenuStyle = document.createElement("style");
+criticalMobileMenuStyle.setAttribute("data-cham-critical-mobile-menu", "true");
+criticalMobileMenuStyle.textContent = `
+  @media (max-width: 760px) {
+    html,
+    body {
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    .site-header {
+      position: sticky !important;
+      z-index: 100 !important;
+      top: 0 !important;
+      transform: translateY(0) !important;
+      background: rgba(255, 255, 255, 0.98) !important;
+    }
+
+    .site-header::after {
+      display: none !important;
+    }
+
+    .site-header > .top-nav {
+      display: none !important;
+      visibility: hidden !important;
+      pointer-events: none !important;
+    }
+
+    .mobile-nav-panel {
+      position: fixed !important;
+      z-index: 98 !important;
+      top: 64px !important;
+      left: 0 !important;
+      right: 0 !important;
+      bottom: 0 !important;
+      min-height: calc(100svh - 64px) !important;
+      padding: 18px 30px 32px !important;
+      border-top: 1px solid var(--line) !important;
+      background: #fff !important;
+      overflow-y: auto !important;
+      overscroll-behavior: contain !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
+      visibility: hidden !important;
+      transform: translateY(-8px) !important;
+      transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease !important;
+    }
+
+    .site-header.is-menu-open .mobile-nav-panel {
+      opacity: 1 !important;
+      pointer-events: auto !important;
+      visibility: visible !important;
+      transform: translateY(0) !important;
+    }
+
+    .mobile-nav-panel a {
+      display: flex !important;
+      align-items: center !important;
+      min-height: 72px !important;
+      padding: 12px 0 !important;
+      border-bottom: 1px solid var(--line) !important;
+      color: var(--ink) !important;
+      font-size: clamp(38px, 10.8vw, 58px) !important;
+      font-weight: 400 !important;
+      line-height: 1.08 !important;
+      letter-spacing: 0 !important;
+      text-transform: uppercase !important;
+      white-space: normal !important;
+    }
+
+    .mobile-nav-panel a:last-child {
+      border-bottom: 0 !important;
+    }
+
+    body.is-menu-open {
+      overflow: hidden !important;
+      touch-action: none !important;
+    }
+  }
+
+  @media (max-width: 520px) {
+    .mobile-nav-panel {
+      top: 60px !important;
+      min-height: calc(100svh - 60px) !important;
+    }
+  }
+`;
+document.head.prepend(criticalMobileMenuStyle);
+
 const responsiveFixHref = "css/responsive-fix.css";
 const hasResponsiveFix = Array.from(document.styleSheets).some((styleSheet) => {
   try {
@@ -22,11 +111,14 @@ let pointerNearTop = false;
 const isMobileViewport = () => window.matchMedia("(max-width: 760px)").matches;
 
 if (header) {
+  const existingMobileNavPanel = header.querySelector(".mobile-nav-panel");
+  existingMobileNavPanel?.remove();
+
   const mobileNavPanel = document.createElement("nav");
   mobileNavPanel.className = "mobile-nav-panel";
   mobileNavPanel.setAttribute("aria-label", "Điều hướng chính trên mobile");
 
-  header.querySelectorAll(".top-nav a").forEach((navLink) => {
+  header.querySelectorAll(":scope > .top-nav a").forEach((navLink) => {
     const mobileLink = navLink.cloneNode(true);
     mobileNavPanel.append(mobileLink);
   });
@@ -85,7 +177,7 @@ if (header) {
     setMenuOpen(!header.classList.contains("is-menu-open"));
   });
 
-  header.querySelectorAll(".top-nav a, .mobile-nav-panel a").forEach((navLink) => {
+  header.querySelectorAll(":scope > .top-nav a, .mobile-nav-panel a").forEach((navLink) => {
     navLink.addEventListener("click", () => {
       setMenuOpen(false);
     });
