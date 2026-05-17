@@ -12,7 +12,146 @@ mobileFixStyle.textContent = `
     overflow-x: hidden;
   }
 
+  body {
+    font-size: 16px;
+    line-height: 1.55;
+    text-rendering: optimizeLegibility;
+  }
+
+  .hero-title h1 {
+    font-size: clamp(56px, 8.2vw, 132px) !important;
+    line-height: 1.02 !important;
+    letter-spacing: -0.01em !important;
+    font-weight: 300;
+  }
+
+  .projects h2,
+  .studio h2,
+  .method h2,
+  .services h2,
+  .process h2,
+  .news h2,
+  .philosophy h2,
+  .studio-services h2 {
+    font-size: clamp(44px, 6.1vw, 92px) !important;
+    line-height: 1.04 !important;
+    letter-spacing: -0.015em !important;
+    font-weight: 400;
+  }
+
+  .page-hero h1,
+  .contact-page-hero h1,
+  .article-hero h1 {
+    line-height: 1.06 !important;
+    letter-spacing: -0.012em !important;
+  }
+
+  .intro h2,
+  .project-feature-list h2,
+  .studio-item h3,
+  .studio-profile h2,
+  .philosophy-list h3,
+  .studio-service-grid h3,
+  .method-list h3,
+  .service-list h3,
+  .news-list h3,
+  .contact-copy h2 {
+    line-height: 1.12 !important;
+    letter-spacing: -0.012em !important;
+  }
+
+  .project-intro p,
+  .studio-statement p,
+  .method-intro p {
+    line-height: 1.2 !important;
+    letter-spacing: -0.008em !important;
+  }
+
+  .intro p,
+  .project-feature-list p,
+  .studio-item p,
+  .studio-profile p,
+  .philosophy-list p,
+  .method-list p,
+  .service-list p,
+  .process-list p,
+  .contact-copy > p,
+  .page-hero p,
+  .contact-page-hero p,
+  .article-body p {
+    line-height: 1.56 !important;
+    letter-spacing: 0 !important;
+  }
+
+  .top-nav a,
+  .language-switch,
+  .hero-title span,
+  .intro span,
+  .project-tile span,
+  .project-categories button,
+  .project-feature-list span,
+  .studio-profile span,
+  .studio-service-grid span,
+  .method-list span,
+  .process-list span,
+  .news-list span,
+  .brief-form span,
+  .brief-form button,
+  .contact-cta,
+  .footer-brand,
+  .floating-contact-menu a {
+    letter-spacing: 0.055em !important;
+  }
+
+  @media (min-width: 761px) and (max-width: 1024px) {
+    body {
+      font-size: 16px;
+      line-height: 1.55;
+    }
+
+    .hero-title h1 {
+      font-size: clamp(68px, 10vw, 108px) !important;
+      line-height: 1.04 !important;
+      letter-spacing: -0.006em !important;
+    }
+
+    .projects h2,
+    .studio h2,
+    .method h2,
+    .services h2,
+    .process h2,
+    .news h2,
+    .philosophy h2,
+    .studio-services h2 {
+      font-size: clamp(54px, 8.8vw, 82px) !important;
+      line-height: 1.06 !important;
+      letter-spacing: -0.006em !important;
+    }
+
+    .intro h2,
+    .studio-item h3,
+    .method-list h3,
+    .service-list h3,
+    .news-list h3,
+    .contact-copy h2 {
+      line-height: 1.14 !important;
+      letter-spacing: -0.006em !important;
+    }
+
+    .project-intro p,
+    .studio-statement p,
+    .method-intro p {
+      line-height: 1.2 !important;
+      letter-spacing: -0.004em !important;
+    }
+  }
+
   @media (max-width: 760px) {
+    body {
+      font-size: 16px;
+      line-height: 1.56;
+    }
+
     .site-header {
       position: sticky;
       z-index: 100;
@@ -26,6 +165,77 @@ mobileFixStyle.textContent = `
 
     .site-header .top-nav {
       display: none !important;
+    }
+
+    .hero-title h1 {
+      font-size: clamp(48px, 14.6vw, 68px) !important;
+      line-height: 1.08 !important;
+      letter-spacing: 0 !important;
+    }
+
+    .projects h2,
+    .studio h2,
+    .method h2,
+    .services h2,
+    .process h2,
+    .news h2,
+    .philosophy h2,
+    .studio-services h2 {
+      font-size: clamp(40px, 12.4vw, 58px) !important;
+      line-height: 1.1 !important;
+      letter-spacing: 0 !important;
+    }
+
+    .intro h2,
+    .studio-item h3,
+    .method-list h3,
+    .service-list h3,
+    .news-list h3,
+    .contact-copy h2,
+    .page-hero h1,
+    .contact-page-hero h1,
+    .article-hero h1 {
+      line-height: 1.16 !important;
+      letter-spacing: 0 !important;
+    }
+
+    .project-intro p,
+    .studio-statement p,
+    .method-intro p {
+      line-height: 1.24 !important;
+      letter-spacing: 0 !important;
+    }
+
+    .intro p,
+    .studio-item p,
+    .method-list p,
+    .service-list p,
+    .process-list p,
+    .contact-copy > p,
+    .contact-links,
+    .article-body p {
+      line-height: 1.6 !important;
+      letter-spacing: 0 !important;
+    }
+
+    .top-nav a,
+    .language-switch,
+    .hero-title span,
+    .intro span,
+    .project-tile span,
+    .project-categories button,
+    .project-feature-list span,
+    .studio-profile span,
+    .studio-service-grid span,
+    .method-list span,
+    .process-list span,
+    .news-list span,
+    .brief-form span,
+    .brief-form button,
+    .contact-cta,
+    .footer-brand,
+    .floating-contact-menu a {
+      letter-spacing: 0.045em !important;
     }
 
     .mobile-nav-panel {
@@ -65,7 +275,7 @@ mobileFixStyle.textContent = `
       font-size: clamp(38px, 10.8vw, 58px);
       font-weight: 400;
       line-height: 1.08;
-      letter-spacing: 0;
+      letter-spacing: 0 !important;
       text-transform: uppercase;
       white-space: normal;
     }
@@ -121,6 +331,27 @@ mobileFixStyle.textContent = `
   }
 
   @media (max-width: 520px) {
+    body {
+      font-size: 15.5px;
+    }
+
+    .hero-title h1 {
+      font-size: clamp(44px, 14vw, 58px) !important;
+      line-height: 1.08 !important;
+    }
+
+    .projects h2,
+    .studio h2,
+    .method h2,
+    .services h2,
+    .process h2,
+    .news h2,
+    .philosophy h2,
+    .studio-services h2 {
+      font-size: clamp(38px, 11.8vw, 52px) !important;
+      line-height: 1.1 !important;
+    }
+
     .mobile-nav-panel {
       top: 60px;
       min-height: calc(100svh - 60px);
@@ -151,6 +382,7 @@ mobileFixStyle.textContent = `
       bottom: 10px;
       font-size: 10px;
       line-height: 1.2;
+      letter-spacing: 0.04em !important;
     }
 
     .hero,
