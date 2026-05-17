@@ -90,7 +90,25 @@ mobileFixStyle.textContent = `
     }
 
     .project-grid,
-    .project-grid-four,
+    .project-grid-four {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      gap: 6px;
+      max-width: 100%;
+    }
+
+    .project-grid {
+      padding-left: var(--page-pad);
+      padding-right: var(--page-pad);
+    }
+
+    .project-tile,
+    .project-tile-large {
+      grid-column: span 1 !important;
+      grid-row: span 1 !important;
+      aspect-ratio: 1.05 / 1;
+    }
+
     .studio-list,
     .method-list,
     .process-list,
@@ -113,6 +131,26 @@ mobileFixStyle.textContent = `
       min-height: 72px;
       font-size: clamp(40px, 11.4vw, 56px);
       line-height: 1.08;
+    }
+
+    .project-grid,
+    .project-grid-four {
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      gap: 6px;
+    }
+
+    .project-tile,
+    .project-tile-large {
+      grid-column: span 1 !important;
+      aspect-ratio: 1.02 / 1;
+    }
+
+    .project-tile span {
+      left: 10px;
+      right: 10px;
+      bottom: 10px;
+      font-size: 10px;
+      line-height: 1.2;
     }
 
     .hero,
