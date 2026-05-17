@@ -3,18 +3,13 @@ const menuToggle = document.querySelector(".menu-toggle");
 let lastScrollY = window.scrollY;
 let pointerNearTop = false;
 
-const mobileFixStyle = document.createElement("style");
-mobileFixStyle.setAttribute("data-cham-mobile-fix", "true");
-mobileFixStyle.textContent = `
+const runtimeStyle = document.createElement("style");
+runtimeStyle.setAttribute("data-cham-runtime-fix", "true");
+runtimeStyle.textContent = `
   html,
   body {
     max-width: 100%;
     overflow-x: hidden;
-  }
-
-  body {
-    font-size: 16px;
-    line-height: 1.55;
     text-rendering: optimizeLegibility;
   }
 
@@ -28,140 +23,13 @@ mobileFixStyle.textContent = `
     opacity: 0 !important;
     pointer-events: none !important;
     transform: translateY(8px) !important;
+    transition: opacity 0.18s ease, transform 0.18s ease;
   }
 
   .floating-contact.is-open .floating-contact-menu {
     opacity: 1 !important;
     pointer-events: auto !important;
     transform: translateY(0) !important;
-  }
-
-  .hero-title h1 {
-    font-size: clamp(56px, 8.2vw, 132px) !important;
-    line-height: 1.02 !important;
-    letter-spacing: -0.01em !important;
-    font-weight: 300;
-  }
-
-  .projects h2,
-  .studio h2,
-  .method h2,
-  .services h2,
-  .process h2,
-  .news h2,
-  .philosophy h2,
-  .studio-services h2 {
-    font-size: clamp(44px, 6.1vw, 92px) !important;
-    line-height: 1.04 !important;
-    letter-spacing: -0.015em !important;
-    font-weight: 400;
-  }
-
-  .page-hero h1,
-  .contact-page-hero h1,
-  .article-hero h1 {
-    line-height: 1.06 !important;
-    letter-spacing: -0.012em !important;
-  }
-
-  .intro h2,
-  .project-feature-list h2,
-  .studio-item h3,
-  .studio-profile h2,
-  .philosophy-list h3,
-  .studio-service-grid h3,
-  .method-list h3,
-  .service-list h3,
-  .news-list h3,
-  .contact-copy h2 {
-    line-height: 1.12 !important;
-    letter-spacing: -0.012em !important;
-  }
-
-  .project-intro p,
-  .studio-statement p,
-  .method-intro p {
-    line-height: 1.2 !important;
-    letter-spacing: -0.008em !important;
-  }
-
-  .intro p,
-  .project-feature-list p,
-  .studio-item p,
-  .studio-profile p,
-  .philosophy-list p,
-  .method-list p,
-  .service-list p,
-  .process-list p,
-  .contact-copy > p,
-  .page-hero p,
-  .contact-page-hero p,
-  .article-body p {
-    line-height: 1.56 !important;
-    letter-spacing: 0 !important;
-  }
-
-  .top-nav a,
-  .language-switch,
-  .hero-title span,
-  .intro span,
-  .project-tile span,
-  .project-categories button,
-  .project-feature-list span,
-  .studio-profile span,
-  .studio-service-grid span,
-  .method-list span,
-  .process-list span,
-  .news-list span,
-  .brief-form span,
-  .brief-form button,
-  .contact-cta,
-  .footer-brand,
-  .floating-contact-menu a {
-    letter-spacing: 0.055em !important;
-  }
-
-  @media (min-width: 761px) and (max-width: 1024px) {
-    body {
-      font-size: 16px;
-      line-height: 1.55;
-    }
-
-    .hero-title h1 {
-      font-size: clamp(68px, 10vw, 108px) !important;
-      line-height: 1.04 !important;
-      letter-spacing: -0.006em !important;
-    }
-
-    .projects h2,
-    .studio h2,
-    .method h2,
-    .services h2,
-    .process h2,
-    .news h2,
-    .philosophy h2,
-    .studio-services h2 {
-      font-size: clamp(54px, 8.8vw, 82px) !important;
-      line-height: 1.06 !important;
-      letter-spacing: -0.006em !important;
-    }
-
-    .intro h2,
-    .studio-item h3,
-    .method-list h3,
-    .service-list h3,
-    .news-list h3,
-    .contact-copy h2 {
-      line-height: 1.14 !important;
-      letter-spacing: -0.006em !important;
-    }
-
-    .project-intro p,
-    .studio-statement p,
-    .method-intro p {
-      line-height: 1.2 !important;
-      letter-spacing: -0.004em !important;
-    }
   }
 
   @media (max-width: 760px) {
@@ -173,6 +41,7 @@ mobileFixStyle.textContent = `
     .site-header {
       position: sticky;
       z-index: 100;
+      top: 0;
       transform: translateY(0) !important;
       background: rgba(255, 255, 255, 0.98);
     }
@@ -183,84 +52,6 @@ mobileFixStyle.textContent = `
 
     .site-header .top-nav {
       display: none !important;
-    }
-
-    .hero-title h1 {
-      font-size: clamp(48px, 14.6vw, 68px) !important;
-      line-height: 1.08 !important;
-      letter-spacing: 0 !important;
-    }
-
-    .projects h2,
-    .studio h2,
-    .method h2,
-    .services h2,
-    .process h2,
-    .news h2,
-    .philosophy h2,
-    .studio-services h2 {
-      font-size: clamp(40px, 12.4vw, 58px) !important;
-      line-height: 1.1 !important;
-      letter-spacing: 0 !important;
-    }
-
-    .intro h2,
-    .studio-item h3,
-    .method-list h3,
-    .service-list h3,
-    .news-list h3,
-    .page-hero h1,
-    .contact-page-hero h1,
-    .article-hero h1 {
-      line-height: 1.16 !important;
-      letter-spacing: 0 !important;
-    }
-
-    .contact-copy h2,
-    .contact-teaser .contact-copy h2 {
-      max-width: 420px !important;
-      font-size: clamp(44px, 11.5vw, 58px) !important;
-      line-height: 1.08 !important;
-      letter-spacing: -0.01em !important;
-    }
-
-    .project-intro p,
-    .studio-statement p,
-    .method-intro p {
-      line-height: 1.24 !important;
-      letter-spacing: 0 !important;
-    }
-
-    .intro p,
-    .studio-item p,
-    .method-list p,
-    .service-list p,
-    .process-list p,
-    .contact-copy > p,
-    .contact-links,
-    .article-body p {
-      line-height: 1.6 !important;
-      letter-spacing: 0 !important;
-    }
-
-    .top-nav a,
-    .language-switch,
-    .hero-title span,
-    .intro span,
-    .project-tile span,
-    .project-categories button,
-    .project-feature-list span,
-    .studio-profile span,
-    .studio-service-grid span,
-    .method-list span,
-    .process-list span,
-    .news-list span,
-    .brief-form span,
-    .brief-form button,
-    .contact-cta,
-    .footer-brand,
-    .floating-contact-menu a {
-      letter-spacing: 0.045em !important;
     }
 
     .mobile-nav-panel {
@@ -315,13 +106,54 @@ mobileFixStyle.textContent = `
     }
 
     body.is-menu-open .floating-contact {
-      opacity: 0;
-      pointer-events: none;
+      opacity: 0 !important;
+      pointer-events: none !important;
     }
 
     .hero,
     .page-image-hero {
       min-height: min(520px, calc(100svh - 60px));
+    }
+
+    .hero-title h1 {
+      font-size: clamp(48px, 14.6vw, 68px) !important;
+      line-height: 1.08 !important;
+      letter-spacing: 0 !important;
+    }
+
+    .projects h2,
+    .studio h2,
+    .method h2,
+    .services h2,
+    .process h2,
+    .news h2,
+    .philosophy h2,
+    .studio-services h2 {
+      font-size: clamp(40px, 12.4vw, 58px) !important;
+      line-height: 1.1 !important;
+      letter-spacing: 0 !important;
+    }
+
+    .contact-copy h2,
+    .contact-teaser .contact-copy h2 {
+      max-width: 100% !important;
+      font-size: clamp(34px, 9vw, 46px) !important;
+      line-height: 1.1 !important;
+      letter-spacing: -0.004em !important;
+      word-break: normal !important;
+      overflow-wrap: normal !important;
+    }
+
+    .contact-copy > p,
+    .contact-links,
+    .intro p,
+    .studio-item p,
+    .method-list p,
+    .service-list p,
+    .process-list p,
+    .article-body p {
+      line-height: 1.6 !important;
+      letter-spacing: 0 !important;
     }
 
     .project-grid,
@@ -343,46 +175,11 @@ mobileFixStyle.textContent = `
       grid-row: span 1 !important;
       aspect-ratio: 1.05 / 1;
     }
-
-    .studio-list,
-    .method-list,
-    .process-list,
-    .service-list,
-    .news-list,
-    .contact-panel,
-    .footer {
-      max-width: 100%;
-    }
   }
 
   @media (max-width: 520px) {
     body {
       font-size: 15.5px;
-    }
-
-    .hero-title h1 {
-      font-size: clamp(44px, 14vw, 58px) !important;
-      line-height: 1.08 !important;
-    }
-
-    .projects h2,
-    .studio h2,
-    .method h2,
-    .services h2,
-    .process h2,
-    .news h2,
-    .philosophy h2,
-    .studio-services h2 {
-      font-size: clamp(38px, 11.8vw, 52px) !important;
-      line-height: 1.1 !important;
-    }
-
-    .contact-copy h2,
-    .contact-teaser .contact-copy h2 {
-      max-width: 340px !important;
-      font-size: clamp(42px, 10.8vw, 50px) !important;
-      line-height: 1.1 !important;
-      letter-spacing: -0.008em !important;
     }
 
     .mobile-nav-panel {
@@ -395,6 +192,17 @@ mobileFixStyle.textContent = `
       min-height: 72px;
       font-size: clamp(40px, 11.4vw, 56px);
       line-height: 1.08;
+    }
+
+    .hero-title h1 {
+      font-size: clamp(44px, 14vw, 58px) !important;
+      line-height: 1.08 !important;
+    }
+
+    .contact-copy h2,
+    .contact-teaser .contact-copy h2 {
+      font-size: clamp(32px, 8.5vw, 42px) !important;
+      line-height: 1.12 !important;
     }
 
     .project-grid,
@@ -424,18 +232,21 @@ mobileFixStyle.textContent = `
     }
   }
 `;
-document.head.append(mobileFixStyle);
+document.head.append(runtimeStyle);
+
+document.querySelector(".contact-teaser .contact-copy h2")?.replaceChildren("Bắt đầu đúng.");
 
 const isMobileViewport = () => window.matchMedia("(max-width: 760px)").matches;
 
 if (header) {
+  header.querySelector(".mobile-nav-panel")?.remove();
+
   const mobileNavPanel = document.createElement("nav");
   mobileNavPanel.className = "mobile-nav-panel";
   mobileNavPanel.setAttribute("aria-label", "Điều hướng chính trên mobile");
 
   header.querySelectorAll(".top-nav a").forEach((navLink) => {
-    const mobileLink = navLink.cloneNode(true);
-    mobileNavPanel.append(mobileLink);
+    mobileNavPanel.append(navLink.cloneNode(true));
   });
 
   header.append(mobileNavPanel);
@@ -463,15 +274,12 @@ if (header) {
     lastScrollY = Math.max(currentScrollY, 0);
   };
 
-  window.addEventListener("scroll", () => {
-    updateHeaderVisibility();
-  }, { passive: true });
+  window.addEventListener("scroll", updateHeaderVisibility, { passive: true });
 
   window.addEventListener("resize", () => {
     if (!isMobileViewport()) {
       setMenuOpen(false);
     }
-
     updateHeaderVisibility();
   }, { passive: true });
 
@@ -481,7 +289,6 @@ if (header) {
     }
 
     const isNearTop = event.clientY <= 86;
-
     if (isNearTop !== pointerNearTop) {
       pointerNearTop = isNearTop;
       header.classList.toggle("is-hidden", !pointerNearTop && window.scrollY > 96 && !header.classList.contains("is-menu-open"));
@@ -493,17 +300,13 @@ if (header) {
   });
 
   header.querySelectorAll(".top-nav a, .mobile-nav-panel a").forEach((navLink) => {
-    navLink.addEventListener("click", () => {
-      setMenuOpen(false);
-    });
+    navLink.addEventListener("click", () => setMenuOpen(false));
   });
 
   document.addEventListener("click", (event) => {
-    if (!header.classList.contains("is-menu-open") || header.contains(event.target)) {
-      return;
+    if (header.classList.contains("is-menu-open") && !header.contains(event.target)) {
+      setMenuOpen(false);
     }
-
-    setMenuOpen(false);
   });
 
   document.addEventListener("keydown", (event) => {
@@ -521,6 +324,7 @@ document.querySelectorAll(".brief-form").forEach((briefForm) => {
 
   briefForm.addEventListener("submit", (event) => {
     event.preventDefault();
+
     if (!briefForm.checkValidity()) {
       briefForm.reportValidity();
       return;
@@ -530,6 +334,7 @@ document.querySelectorAll(".brief-form").forEach((briefForm) => {
     status.textContent = "Cảm ơn bạn. Chạm sẽ liên hệ lại qua hotline trong thời gian sớm nhất.";
     submitButton.textContent = "Đã nhận brief";
     submitButton.disabled = true;
+
     window.setTimeout(() => {
       submitButton.textContent = "Gửi brief";
       submitButton.disabled = false;
