@@ -2304,3 +2304,182 @@ img {
     text-align: left;
   }
 }
+
+body {
+  font-size: 16px;
+  line-height: 1.5;
+  text-rendering: optimizeLegibility;
+}
+
+.top-nav a,
+.language-switch,
+.hero-title span,
+.intro span,
+.project-tile span,
+.project-categories button,
+.project-feature-list span,
+.studio-profile span,
+.studio-service-grid span,
+.method-list span,
+.process-list span,
+.news-list span,
+.brief-form span,
+.brief-form button,
+.contact-cta,
+.footer-brand,
+.floating-contact-menu a {
+  letter-spacing: 0.055em;
+}
+
+.hero-title h1 {
+  font-size: clamp(56px, 8.4vw, 140px);
+  font-weight: 300;
+  line-height: 1.03;
+  letter-spacing: 0;
+}
+
+.projects h2,
+.studio h2,
+.method h2,
+.services h2,
+.process h2,
+.news h2,
+.philosophy h2,
+.studio-services h2 {
+  font-size: clamp(42px, 6.4vw, 96px);
+  line-height: 1.04;
+  letter-spacing: -0.012em;
+}
+
+.intro h2,
+.project-feature-list h2,
+.studio-item h3,
+.studio-profile h2,
+.philosophy-list h3,
+.studio-service-grid h3,
+.method-list h3,
+.service-list h3,
+.news-list h3,
+.contact-copy h2,
+.page-hero h1,
+.contact-page-hero h1 {
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+}
+
+.intro p,
+.project-feature-list p,
+.studio-profile p,
+.philosophy-list p,
+.method-list p,
+.service-list p,
+.process-list p,
+.contact-copy > p,
+.page-hero p,
+.contact-page-hero p {
+  line-height: 1.52;
+}
+
+.studio-item p {
+  line-height: 1.46;
+  letter-spacing: 0;
+}
+
+.method-intro p,
+.project-intro p,
+.studio-statement p {
+  line-height: 1.18;
+  letter-spacing: -0.01em;
+}
+
+.footer,
+.contact-links {
+  line-height: 1.5;
+}
+
+@media (min-width: 761px) and (max-width: 1024px) {
+  .hero-title h1 {
+    font-size: clamp(74px, 11vw, 108px);
+    line-height: 1.04;
+  }
+
+  .projects h2,
+  .studio h2,
+  .method h2,
+  .services h2,
+  .process h2,
+  .news h2 {
+    font-size: clamp(56px, 9vw, 84px);
+  }
+
+  .intro h2,
+  .studio-item h3,
+  .service-list h3,
+  .news-list h3 {
+    line-height: 1.14;
+  }
+}
+
+@media (max-width: 760px) {
+  .top-nav a {
+    font-size: clamp(30px, 8vw, 40px);
+    line-height: 1.12;
+    letter-spacing: 0;
+  }
+
+  .hero-title h1 {
+    font-size: clamp(48px, 15vw, 68px);
+    line-height: 1.06;
+  }
+
+  .projects h2,
+  .studio h2,
+  .method h2,
+  .services h2,
+  .process h2,
+  .news h2 {
+    font-size: clamp(40px, 13vw, 58px);
+    line-height: 1.08;
+    letter-spacing: 0;
+  }
+
+  .intro h2,
+  .studio-item h3,
+  .method-list h3,
+  .service-list h3,
+  .news-list h3,
+  .contact-copy h2,
+  .page-hero h1,
+  .contact-page-hero h1 {
+    line-height: 1.16;
+    letter-spacing: 0;
+  }
+
+  .intro p,
+  .studio-item p,
+  .method-list p,
+  .service-list p,
+  .process-list p,
+  .news-list h3,
+  .contact-copy > p,
+  .contact-links {
+    line-height: 1.55;
+  }
+
+  .method-intro p,
+  .project-intro p,
+  .studio-statement p {
+    line-height: 1.22;
+    letter-spacing: 0;
+  }
+}
+
+@media (max-width: 520px) {
+  .hero-title h1 {
+    font-size: clamp(46px, 15vw, 60px);
+  }
+
+  .contact-teaser .contact-copy h2 {
+    font-size: clamp(40px, 14vw, 54px);
+  }
+}
