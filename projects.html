@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects - Chạm Group</title>
+  <meta name="description" content="Dự án kiến trúc, nội thất, CGI và không gian sống của Chạm Group." />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+  <main class="site">
+    <header class="site-header">
+      <nav class="top-nav top-nav-left" aria-label="Điều hướng chính bên trái">
+        <a href="projects.html">PROJECTS</a>
+        <a href="studio.html">STUDIO</a>
+        <a href="method.html">METHOD</a>
+      </nav>
+
+      <a class="logo" href="index.html" aria-label="Chạm Group">
+        <img src="images/Logo_Cham.png" alt="Chạm Group" />
+      </a>
+
+      <nav class="top-nav top-nav-right" aria-label="Điều hướng chính bên phải">
+        <a href="services.html">SERVICES</a>
+        <a href="news.html">NEWS</a>
+        <a href="contact.html">CONTACT</a>
+      </nav>
+
+      <div class="header-actions">
+        <a class="language-switch" href="projects.html" aria-label="Ngôn ngữ hiện tại">VI</a>
+        <button class="menu-toggle" type="button" aria-label="Mở menu" aria-expanded="false">
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </header>
+
+    <section class="hero page-image-hero" aria-label="Projects">
+      <img
+        src="images/projects-hero-resort.jpg"
+        alt="Không gian kiến trúc hiện đại với sân trong và ánh sáng tự nhiên"
+      />
+      <div class="hero-title">
+        <span>Selected work</span>
+        <h1>PROJECTS</h1>
+      </div>
+    </section>
+
+    <section class="project-categories">
+      <button class="is-active" type="button" data-filter="all">All</button>
+      <button type="button" data-filter="residential">Residential</button>
+      <button type="button" data-filter="interior">Interior</button>
+      <button type="button" data-filter="commercial">Commercial</button>
+      <button type="button" data-filter="cgi">CGI</button>
+      <button type="button" data-filter="visual">Visual System</button>
+    </section>
+
+    <section class="projects projects-page-section">
+      <div class="project-grid project-grid-four">
+        <a class="project-tile" href="contact.html" data-category="residential">
+          <img src="images/project-courtyard-house.jpg" alt="Nhà phố có sân trong" />
+          <span>Nhà phố có sân trong</span>
+        </a>
+        <a class="project-tile" href="contact.html" data-category="residential interior">
+          <img src="images/project-balanced-apartment.jpg" alt="Căn hộ cân bằng" />
+          <span>Căn hộ cân bằng</span>
+        </a>
+        <a class="project-tile" href="contact.html" data-category="commercial interior">
+          <img src="images/project-office-breathing.jpg" alt="Văn phòng có khoảng thở" />
+          <span>Văn phòng có khoảng thở</span>
+        </a>
+        <a class="project-tile" href="contact.html" data-category="cgi visual">
+          <img src="images/project-resort-cgi.jpg" alt="Resort CGI" />
+          <span>Resort CGI</span>
+        </a>
+        <a class="project-tile" href="contact.html" data-category="interior residential">
+          <img src="images/project-residential-interior.jpg" alt="Nội thất nhà ở" />
+          <span>Nội thất nhà ở</span>
+        </a>
+        <a class="project-tile" href="contact.html" data-category="commercial">
+          <img src="images/project-commercial-space.jpg" alt="Không gian thương mại" />
+          <span>Không gian thương mại</span>
+        </a>
+        <a class="project-tile" href="contact.html" data-category="residential">
+          <img src="images/project-modern-villa.jpg" alt="Biệt thự hiện đại" />
+          <span>Biệt thự hiện đại</span>
+        </a>
+        <a class="project-tile" href="contact.html" data-category="cgi visual">
+          <img src="images/project-architecture-artwork.jpg" alt="Artwork kiến trúc" />
+          <span>Artwork kiến trúc</span>
+        </a>
+        <a class="project-tile" href="contact.html" data-category="residential">
+          <img src="images/project-urban-green.jpg" alt="Không gian xanh đô thị" />
+          <span>Không gian xanh đô thị</span>
+        </a>
+        <a class="project-tile" href="contact.html" data-category="residential">
+          <img src="images/project-office-breathing.jpg" alt="Nhà ở ven nước" />
+          <span>Nhà ở ven nước</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="project-feature-list">
+      <article>
+        <span>01</span>
+        <h2>Nhà ở đô thị</h2>
+        <p>Tối ưu nắng, gió, riêng tư và công năng cho nhà phố, căn hộ, biệt thự trong bối cảnh đô thị Việt Nam.</p>
+      </article>
+      <article>
+        <span>02</span>
+        <h2>Không gian thương mại</h2>
+        <p>Tạo trải nghiệm nhận diện rõ ràng cho showroom, văn phòng, hospitality và không gian bán hàng.</p>
+      </article>
+      <article>
+        <span>03</span>
+        <h2>CGI & visual system</h2>
+        <p>Diễn họa dự án, phối cảnh 3D, artwork kiến trúc và hệ thống hình ảnh phục vụ truyền thông.</p>
+      </article>
+    </section>
+
+    <footer class="footer">
+      <p>Copyright © 2026 Chạm Group.</p>
+      <p>Architecture · Interior · CGI · Visual Communication</p>
+    </footer>
+  </main>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
