@@ -1,3 +1,19 @@
+const responsiveFixHref = "css/responsive-fix.css";
+const hasResponsiveFix = Array.from(document.styleSheets).some((styleSheet) => {
+  try {
+    return styleSheet.href && styleSheet.href.includes(responsiveFixHref);
+  } catch {
+    return false;
+  }
+});
+
+if (!hasResponsiveFix) {
+  const responsiveFixLink = document.createElement("link");
+  responsiveFixLink.rel = "stylesheet";
+  responsiveFixLink.href = responsiveFixHref;
+  document.head.append(responsiveFixLink);
+}
+
 const header = document.querySelector(".site-header");
 const menuToggle = document.querySelector(".menu-toggle");
 let lastScrollY = window.scrollY;
