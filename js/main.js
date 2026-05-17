@@ -13,6 +13,10 @@ runtimeStyle.textContent = `
     text-rendering: optimizeLegibility;
   }
 
+  .mobile-nav-panel {
+    display: none !important;
+  }
+
   .floating-contact {
     display: flex !important;
     opacity: 1;
@@ -55,6 +59,7 @@ runtimeStyle.textContent = `
     }
 
     .mobile-nav-panel {
+      display: block !important;
       position: fixed;
       z-index: 98;
       top: 64px;
