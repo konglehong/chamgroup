@@ -1196,12 +1196,13 @@ img {
 }
 
 .project-detail-title h1 {
-  max-width: 980px;
+  max-width: none;
   margin: 0;
-  font-size: clamp(44px, 6.4vw, 104px);
+  font-size: clamp(42px, 5.4vw, 88px);
   line-height: 0.98;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.02em;
   font-weight: 400;
+  white-space: nowrap;
 }
 
 .project-detail-intro {
@@ -2802,6 +2803,7 @@ body {
     font-size: clamp(38px, 11vw, 54px);
     line-height: 1.06;
     letter-spacing: 0;
+    white-space: normal;
   }
 
   .project-detail-intro {
