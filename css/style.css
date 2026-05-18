@@ -1244,7 +1244,7 @@ img {
 .project-detail-image {
   min-height: 0;
   margin: 0;
-  aspect-ratio: 1.18 / 1;
+  aspect-ratio: 4 / 3;
   overflow: hidden;
   background: #eee;
 }
@@ -1252,11 +1252,6 @@ img {
 .project-detail-image-wide {
   grid-column: 1 / -1;
   aspect-ratio: 16 / 9;
-}
-
-.project-detail-image-tall {
-  grid-row: span 2;
-  aspect-ratio: 0.72 / 1;
 }
 
 .project-detail-notes {
@@ -2834,10 +2829,8 @@ body {
   }
 
   .project-detail-image,
-  .project-detail-image-wide,
-  .project-detail-image-tall {
+  .project-detail-image-wide {
     grid-column: auto;
-    grid-row: auto;
     aspect-ratio: 1.08 / 1;
   }
 
