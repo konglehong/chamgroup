@@ -3,78 +3,49 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>News - Chạm Group</title>
-  <meta name="description" content="Bài viết và góc nhìn của Chạm Group về phong thủy kiến trúc hiện đại." />
+  <title>Journal - Chạm Group</title>
+  <meta name="description" content="Ghi chép của Chạm về không gian, khí hậu, vật liệu và cách sống trong kiến trúc hiện đại." />
+  <link rel="icon" href="images/Icon_Cham.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
-
 <body>
   <main class="site">
     <header class="site-header">
-      <nav class="top-nav top-nav-left" aria-label="Điều hướng chính bên trái">
-        <a href="index.html#projects">PROJECTS</a>
-        <a href="index.html#studio">STUDIO</a>
-        <a href="index.html#method">METHOD</a>
-      </nav>
+  <nav class="top-nav top-nav-left" aria-label="Điều hướng chính bên trái">
+    <a href="projects.html">PROJECTS</a>
+    <a href="studio.html">STUDIO</a>
+    <a href="method.html">METHOD</a>
+  </nav>
+  <a class="logo" href="index.html" aria-label="Chạm Group"><img src="images/Logo_Cham.png" alt="Chạm Group" /></a>
+  <nav class="top-nav top-nav-right" aria-label="Điều hướng chính bên phải">
+    <a href="services.html">SERVICES</a>
+    <a href="news.html">NEWS</a>
+    <a href="contact.html">CONTACT</a>
+  </nav>
+  <div class="header-actions">
+    <a class="language-switch" href="index.html" aria-label="Ngôn ngữ hiện tại">VI</a>
+    <button class="menu-toggle" type="button" aria-label="Mở menu" aria-expanded="false"><span></span><span></span></button>
+  </div>
+</header>
 
-      <a class="logo" href="index.html" aria-label="Chạm Group">
-        <img src="images/Logo_Cham.png" alt="Chạm Group" />
-      </a>
-
-      <nav class="top-nav top-nav-right" aria-label="Điều hướng chính bên phải">
-        <a href="index.html#services">SERVICES</a>
-        <a href="index.html#news">NEWS</a>
-        <a href="index.html#contact">CONTACT</a>
-      </nav>
-
-      <div class="header-actions">
-        <a class="language-switch" href="index.html" aria-label="Ngôn ngữ hiện tại">VI</a>
-        <button class="menu-toggle" type="button" aria-label="Mở menu" aria-expanded="false">
-          <span></span>
-          <span></span>
-        </button>
-      </div>
-    </header>
-
-    <section class="page-hero">
-      <h1>NEWS</h1>
-      <p>Góc nhìn về ánh sáng, gió, vật liệu, cây xanh và cách tổ chức không gian sống hiện đại.</p>
-    </section>
-
-    <section class="news">
-      <div class="news-list">
-        <a class="news-row" href="news-phong-thuy-kien-truc-hien-dai.html">
-          <span>2026</span>
-          <h3>Phong thủy kiến trúc hiện đại khác mê tín như thế nào?</h3>
-        </a>
-        <a class="news-row" href="news-doc-nang-gio-anh-sang.html">
-          <span>2026</span>
-          <h3>Cách đọc nắng, gió và ánh sáng trong nhà phố Việt Nam.</h3>
-        </a>
-        <a class="news-row" href="news-vat-lieu-cay-xanh-cam-giac-song.html">
-          <span>2026</span>
-          <h3>Vật liệu, cây xanh và cảm giác sống trong không gian hiện đại.</h3>
-        </a>
-      </div>
-    </section>
-
-    <footer class="footer">
-      <p>Copyright © 2026 Chạm Group.</p>
-      <p>Architecture · Interior · CGI · Visual Communication</p>
-    </footer>
-
-    <div class="floating-contact" aria-label="Liên hệ nhanh">
-      <button class="floating-contact-toggle" type="button" aria-label="Mở liên hệ nhanh" aria-expanded="false">
-        <img src="images/Icon_Cham.svg" alt="" aria-hidden="true" />
-      </button>
-      <div class="floating-contact-menu">
-        <a href="tel:+84931331139">Call</a>
-        <a href="https://zalo.me/84931331139" target="_blank" rel="noreferrer">Zalo</a>
-        <a href="mailto:hello.vn">Email</a>
-      </div>
-    </div>
+    <section class="page-hero"><img src="images/project-urban-green.jpg" alt="Không gian xanh và ánh sáng trong nhà ở đô thị" /><div class="page-hero-content"><span class="eyebrow">Notes on space</span><h1>NEWS</h1><p>Ghi chép về không gian, khí hậu, vật liệu và cách sống trong kiến trúc hiện đại.</p></div><div class="pill-nav"><button data-filter="all" class="active">Tất cả</button><button data-filter="knowledge">Kiến thức không gian</button><button data-filter="method">Phong thủy kiến trúc</button><button data-filter="studio">Studio</button></div></section>
+    <section class="journal-section" id="knowledge"><div class="journal-list large"><a href="news-phong-thuy-kien-truc-hien-dai.html" data-category="method"><span>01</span><div><h3>Phong thủy kiến trúc hiện đại khác mê tín như thế nào?</h3><p>Một cách hiểu mới về phong thủy: không dự đoán vận mệnh, mà đọc khí hậu, công năng, ánh sáng, vật liệu và cảm giác sống.</p></div></a><a href="news-doc-nang-gio-anh-sang.html" data-category="knowledge"><span>02</span><div><h3>Cách đọc nắng, gió và nhiệt trong nhà phố Việt Nam</h3><p>Nhà phố Việt Nam thường gặp các vấn đề nóng, bí, thiếu sáng và thiếu riêng tư. Thiết kế tốt bắt đầu từ việc đọc đúng các lực tác động này.</p></div></a><a href="news-vat-lieu-cay-xanh-cam-giac-song.html" data-category="knowledge"><span>03</span><div><h3>Vì sao một căn nhà đẹp vẫn có thể khó sống?</h3><p>Hình ảnh đẹp không đảm bảo trải nghiệm tốt. Công năng, âm thanh, ánh sáng và thói quen sử dụng mới quyết định cảm giác sống hằng ngày.</p></div></a><a href="news-vat-lieu-cay-xanh-cam-giac-song.html" data-category="knowledge"><span>04</span><div><h3>Vật liệu có cảm giác</h3><p>Gỗ, đá, vải, kim loại, kính và ánh sáng đều tạo ra những cảm giác khác nhau trong không gian.</p></div></a><a href="news-doc-nang-gio-anh-sang.html" data-category="knowledge"><span>05</span><div><h3>Sân trong, khoảng thở và riêng tư trong nhà đô thị</h3><p>Một khoảng rỗng đúng chỗ có thể thay đổi ánh sáng, gió, nhiệt và cảm giác riêng tư của cả căn nhà.</p></div></a></div></section>
+    <footer class="site-footer">
+  <div>
+    <a class="footer-brand" href="index.html">Chạm Group</a>
+    <p>Architecture · Interior · CGI · Visual Communication</p>
+  </div>
+  <div class="footer-contact">
+    <a href="mailto:hello@chamgroup.vn">hello@chamgroup.vn</a>
+    <a href="tel:+84931331139">0931331139</a>
+  </div>
+  <p>Copyright © 2026 Chạm Group.</p>
+</footer>
+<div class="floating-contact" aria-label="Liên hệ nhanh">
+  <button class="floating-contact-toggle" type="button" aria-label="Mở liên hệ nhanh" aria-expanded="false"><img src="images/Icon_Cham.svg" alt="" aria-hidden="true" /></button>
+  <div class="floating-contact-menu"><a href="tel:+84931331139">Call</a><a href="https://zalo.me/84931331139" target="_blank" rel="noreferrer">Zalo</a><a href="mailto:hello@chamgroup.vn">Email</a></div>
+</div>
   </main>
-
   <script src="js/main.js"></script>
 </body>
 </html>
