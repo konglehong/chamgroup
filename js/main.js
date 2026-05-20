@@ -3,259 +3,7 @@ const menuToggle = document.querySelector(".menu-toggle");
 let lastScrollY = window.scrollY;
 let pointerNearTop = false;
 
-const runtimeStyle = document.createElement("style");
-runtimeStyle.setAttribute("data-cham-runtime-fix", "true");
-runtimeStyle.textContent = `
-  html,
-  body {
-    max-width: 100%;
-    overflow-x: hidden;
-    text-rendering: optimizeLegibility;
-  }
-
-  .mobile-nav-panel {
-    display: none !important;
-  }
-
-  .floating-contact {
-    display: flex !important;
-    opacity: 1;
-    pointer-events: auto;
-  }
-
-  .floating-contact .floating-contact-menu {
-    opacity: 0 !important;
-    pointer-events: none !important;
-    transform: translateY(8px) !important;
-    transition: opacity 0.18s ease, transform 0.18s ease;
-  }
-
-  .floating-contact.is-open .floating-contact-menu {
-    opacity: 1 !important;
-    pointer-events: auto !important;
-    transform: translateY(0) !important;
-  }
-
-  @media (max-width: 760px) {
-    body {
-      font-size: 16px;
-      line-height: 1.56;
-    }
-
-    .site-header {
-      position: sticky;
-      z-index: 100;
-      top: 0;
-      transform: translateY(0) !important;
-      background: rgba(255, 255, 255, 0.98);
-    }
-
-    .site-header::after {
-      display: none !important;
-    }
-
-    .site-header .top-nav {
-      display: none !important;
-    }
-
-    .mobile-nav-panel {
-      display: block !important;
-      position: fixed;
-      z-index: 98;
-      top: 64px;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      min-height: calc(100svh - 64px);
-      padding: 18px 30px 32px;
-      border-top: 1px solid var(--line);
-      background: #fff;
-      overflow-y: auto;
-      overscroll-behavior: contain;
-      opacity: 0;
-      pointer-events: none;
-      visibility: hidden;
-      transform: translateY(-8px);
-      transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
-    }
-
-    .site-header.is-menu-open .mobile-nav-panel {
-      opacity: 1;
-      pointer-events: auto;
-      visibility: visible;
-      transform: translateY(0);
-    }
-
-    .mobile-nav-panel a {
-      display: flex;
-      align-items: center;
-      min-height: 72px;
-      padding: 12px 0;
-      border-bottom: 1px solid var(--line);
-      color: var(--ink);
-      font-size: clamp(38px, 10.8vw, 58px);
-      font-weight: 400;
-      line-height: 1.08;
-      letter-spacing: 0 !important;
-      text-transform: uppercase;
-      white-space: normal;
-    }
-
-    .mobile-nav-panel a:last-child {
-      border-bottom: 0;
-    }
-
-    body.is-menu-open {
-      overflow: hidden;
-      touch-action: none;
-    }
-
-    body.is-menu-open .floating-contact {
-      opacity: 0 !important;
-      pointer-events: none !important;
-    }
-
-    .hero,
-    .page-image-hero {
-      min-height: min(520px, calc(100svh - 60px));
-    }
-
-    .hero-title h1 {
-      font-size: clamp(48px, 14.6vw, 68px) !important;
-      line-height: 1.08 !important;
-      letter-spacing: 0 !important;
-    }
-
-    .projects h2,
-    .studio h2,
-    .method h2,
-    .services h2,
-    .process h2,
-    .news h2,
-    .philosophy h2,
-    .studio-services h2 {
-      font-size: clamp(40px, 12.4vw, 58px) !important;
-      line-height: 1.1 !important;
-      letter-spacing: 0 !important;
-    }
-
-    .contact-copy h2,
-    .contact-teaser .contact-copy h2 {
-      max-width: 100% !important;
-      font-size: clamp(34px, 9vw, 46px) !important;
-      line-height: 1.1 !important;
-      letter-spacing: -0.004em !important;
-      word-break: normal !important;
-      overflow-wrap: normal !important;
-    }
-
-    .contact-copy > p,
-    .contact-links,
-    .intro p,
-    .studio-item p,
-    .method-list p,
-    .service-list p,
-    .process-list p,
-    .article-body p {
-      line-height: 1.6 !important;
-      letter-spacing: 0 !important;
-    }
-
-    .project-grid,
-    .project-grid-four {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-      gap: 6px;
-      max-width: 100%;
-    }
-
-    .project-grid {
-      padding-left: var(--page-pad);
-      padding-right: var(--page-pad);
-    }
-
-    .project-tile,
-    .project-tile-large {
-      grid-column: span 1 !important;
-      grid-row: span 1 !important;
-      aspect-ratio: 1.05 / 1;
-    }
-  }
-
-  @media (max-width: 520px) {
-    body {
-      font-size: 15.5px;
-    }
-
-    .mobile-nav-panel {
-      top: 60px;
-      min-height: calc(100svh - 60px);
-      padding: 18px 30px 28px;
-    }
-
-    .mobile-nav-panel a {
-      min-height: 72px;
-      font-size: clamp(40px, 11.4vw, 56px);
-      line-height: 1.08;
-    }
-
-    .hero-title h1 {
-      font-size: clamp(44px, 14vw, 58px) !important;
-      line-height: 1.08 !important;
-    }
-
-    .contact-copy h2,
-    .contact-teaser .contact-copy h2 {
-      font-size: clamp(32px, 8.5vw, 42px) !important;
-      line-height: 1.12 !important;
-    }
-
-    .project-grid,
-    .project-grid-four {
-      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-      gap: 6px;
-    }
-
-    .project-tile,
-    .project-tile-large {
-      grid-column: span 1 !important;
-      aspect-ratio: 1.02 / 1;
-    }
-
-    .project-tile span {
-      left: 10px;
-      right: 10px;
-      bottom: 10px;
-      font-size: 10px;
-      line-height: 1.2;
-      letter-spacing: 0.04em !important;
-    }
-
-    .hero,
-    .page-image-hero {
-      min-height: 500px;
-    }
-  }
-`;
-document.head.append(runtimeStyle);
-
-document.querySelector(".contact-teaser .contact-copy h2")?.replaceChildren("Bắt đầu đúng.");
-
-const isMobileViewport = () => window.matchMedia("(max-width: 760px)").matches;
-
 if (header) {
-  header.querySelector(".mobile-nav-panel")?.remove();
-
-  const mobileNavPanel = document.createElement("nav");
-  mobileNavPanel.className = "mobile-nav-panel";
-  mobileNavPanel.setAttribute("aria-label", "Điều hướng chính trên mobile");
-
-  header.querySelectorAll(".top-nav a").forEach((navLink) => {
-    mobileNavPanel.append(navLink.cloneNode(true));
-  });
-
-  header.append(mobileNavPanel);
-
   const setMenuOpen = (isOpen) => {
     header.classList.toggle("is-menu-open", isOpen);
     document.body.classList.toggle("is-menu-open", isOpen);
@@ -265,13 +13,6 @@ if (header) {
 
   const updateHeaderVisibility = () => {
     const currentScrollY = window.scrollY;
-
-    if (isMobileViewport()) {
-      header.classList.remove("is-hidden");
-      lastScrollY = Math.max(currentScrollY, 0);
-      return;
-    }
-
     const scrollingDown = currentScrollY > lastScrollY;
     const shouldHide = scrollingDown && currentScrollY > 96 && !pointerNearTop && !header.classList.contains("is-menu-open");
 
@@ -279,21 +20,13 @@ if (header) {
     lastScrollY = Math.max(currentScrollY, 0);
   };
 
-  window.addEventListener("scroll", updateHeaderVisibility, { passive: true });
-
-  window.addEventListener("resize", () => {
-    if (!isMobileViewport()) {
-      setMenuOpen(false);
-    }
+  window.addEventListener("scroll", () => {
     updateHeaderVisibility();
   }, { passive: true });
 
   window.addEventListener("mousemove", (event) => {
-    if (isMobileViewport()) {
-      return;
-    }
-
     const isNearTop = event.clientY <= 86;
+
     if (isNearTop !== pointerNearTop) {
       pointerNearTop = isNearTop;
       header.classList.toggle("is-hidden", !pointerNearTop && window.scrollY > 96 && !header.classList.contains("is-menu-open"));
@@ -304,14 +37,18 @@ if (header) {
     setMenuOpen(!header.classList.contains("is-menu-open"));
   });
 
-  header.querySelectorAll(".top-nav a, .mobile-nav-panel a").forEach((navLink) => {
-    navLink.addEventListener("click", () => setMenuOpen(false));
+  header.querySelectorAll(".top-nav a").forEach((navLink) => {
+    navLink.addEventListener("click", () => {
+      setMenuOpen(false);
+    });
   });
 
   document.addEventListener("click", (event) => {
-    if (header.classList.contains("is-menu-open") && !header.contains(event.target)) {
-      setMenuOpen(false);
+    if (!header.classList.contains("is-menu-open") || header.contains(event.target)) {
+      return;
     }
+
+    setMenuOpen(false);
   });
 
   document.addEventListener("keydown", (event) => {
@@ -329,7 +66,6 @@ document.querySelectorAll(".brief-form").forEach((briefForm) => {
 
   briefForm.addEventListener("submit", (event) => {
     event.preventDefault();
-
     if (!briefForm.checkValidity()) {
       briefForm.reportValidity();
       return;
@@ -339,7 +75,6 @@ document.querySelectorAll(".brief-form").forEach((briefForm) => {
     status.textContent = "Cảm ơn bạn. Chạm sẽ liên hệ lại qua hotline trong thời gian sớm nhất.";
     submitButton.textContent = "Đã nhận brief";
     submitButton.disabled = true;
-
     window.setTimeout(() => {
       submitButton.textContent = "Gửi brief";
       submitButton.disabled = false;
@@ -348,50 +83,12 @@ document.querySelectorAll(".brief-form").forEach((briefForm) => {
   });
 });
 
-const closeFloatingContact = (floatingContact) => {
-  if (!floatingContact) {
-    return;
-  }
-
-  floatingContact.classList.remove("is-open");
-  const toggleButton = floatingContact.querySelector(".floating-contact-toggle");
-  toggleButton?.setAttribute("aria-expanded", "false");
-};
-
 document.querySelectorAll(".floating-contact-toggle").forEach((toggleButton) => {
-  toggleButton.addEventListener("click", (event) => {
-    event.stopPropagation();
-
+  toggleButton.addEventListener("click", () => {
     const floatingContact = toggleButton.closest(".floating-contact");
-    const willOpen = !floatingContact?.classList.contains("is-open");
-
-    document.querySelectorAll(".floating-contact.is-open").forEach((openContact) => {
-      if (openContact !== floatingContact) {
-        closeFloatingContact(openContact);
-      }
-    });
-
-    floatingContact?.classList.toggle("is-open", willOpen);
-    toggleButton.setAttribute("aria-expanded", String(Boolean(willOpen)));
-
-    if (!willOpen) {
-      toggleButton.blur();
-    }
+    const isOpen = floatingContact?.classList.toggle("is-open");
+    toggleButton.setAttribute("aria-expanded", String(Boolean(isOpen)));
   });
-});
-
-document.addEventListener("click", (event) => {
-  document.querySelectorAll(".floating-contact.is-open").forEach((floatingContact) => {
-    if (!floatingContact.contains(event.target)) {
-      closeFloatingContact(floatingContact);
-    }
-  });
-});
-
-document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape") {
-    document.querySelectorAll(".floating-contact.is-open").forEach(closeFloatingContact);
-  }
 });
 
 const projectFilterButtons = document.querySelectorAll(".project-categories button");
